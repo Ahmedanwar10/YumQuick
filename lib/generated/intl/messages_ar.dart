@@ -21,5 +21,30 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "address": MessageLookupByLibrary.simpleMessage("العنوان"),
+        "confirm_password":
+            MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+        "dont_have_account":
+            MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+        "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
+        "forgot_password":
+            MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور"),
+        "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "login_success_title":
+            MessageLookupByLibrary.simpleMessage("تم تسجيل الدخول بنجاح"),
+        "login_successfully":
+            MessageLookupByLibrary.simpleMessage("تم تسجيل الدخول بنجاح"),
+        "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+        "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+        "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
+        "register_success_title":
+            MessageLookupByLibrary.simpleMessage("تم التسجيل بنجاح"),
+        "register_successfully":
+            MessageLookupByLibrary.simpleMessage("تم التسجيل بنجاح"),
+        "reset_password":
+            MessageLookupByLibrary.simpleMessage("استعادة كلمة المرور"),
+        "sign_up": MessageLookupByLibrary.simpleMessage("انشاء حساب")
+      };
 }

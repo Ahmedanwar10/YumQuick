@@ -4,12 +4,12 @@ import 'package:yum_quick/core/common/widgets/wrapper_dio.dart';
 class LoginService {
   final DioWrapper _dioWrapper = DioWrapper();
 
-  LoginService(DioWrapper dioWrapper); // Singleton
+  LoginService(DioWrapper dioWrapper, ); // Singleton
 
   Future<Response?> login(
       {required String email, required String password}) async {
     Map<String, dynamic> body = {
-      'username': email,
+      'email': email,
       'password': password,
     };
 

@@ -131,7 +131,9 @@ class DioWrapper {
     return _handleRequest(() => _dio.post(
           endpoint,
           data: data,
-          options: Options(headers: _getHeaders(requiresAuth)),
+          options: Options(headers: _getHeaders(requiresAuth),
+          contentType: Headers.formUrlEncodedContentType,
+          ),
      ) );
   }
 

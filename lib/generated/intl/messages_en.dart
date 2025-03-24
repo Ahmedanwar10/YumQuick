@@ -21,5 +21,31 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
+        "confirm_password":
+            MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "dont_have_account":
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "forgot_password":
+            MessageLookupByLibrary.simpleMessage("Forgot Password"),
+        "hollo": MessageLookupByLibrary.simpleMessage("Hello"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "login_success_title":
+            MessageLookupByLibrary.simpleMessage("Login Successfully"),
+        "login_successfully":
+            MessageLookupByLibrary.simpleMessage("Login Successfully"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "phone": MessageLookupByLibrary.simpleMessage("Phone"),
+        "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "register_success_title":
+            MessageLookupByLibrary.simpleMessage("Register Successfully"),
+        "register_successfully":
+            MessageLookupByLibrary.simpleMessage("Register Successfully"),
+        "reset_password":
+            MessageLookupByLibrary.simpleMessage("Reset Password"),
+        "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up")
+      };
 }

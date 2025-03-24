@@ -1,1 +1,19 @@
-{}
+{
+    "hollo": "Hello",
+    "login_successfully": "Login Successfully",
+    "login_success_title": "Login Successfully",
+    "dont_have_account": "Don't have an account?",
+    "sign_up": "Sign Up",
+    "register": "Register",
+    "register_success_title": "Register Successfully",
+    "register_successfully": "Register Successfully",
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "name": "Name",
+    "phone": "Phone",
+    "address": "Address",
+    "login": "Login",
+    "forgot_password": "Forgot Password",
+    "reset_password": "Reset Password"
+}

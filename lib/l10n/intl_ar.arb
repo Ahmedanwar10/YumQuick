@@ -1,1 +1,20 @@
-{}
+{
+    "hello": "Hello ",
+    "login_successfully": "تم تسجيل الدخول بنجاح",
+    "login_success_title": "تم تسجيل الدخول بنجاح",
+    "dont_have_account": "ليس لديك حساب؟",
+    "sign_up": "انشاء حساب",
+    "register": "تسجيل",
+    "register_success_title": "تم التسجيل بنجاح",
+    "register_successfully": "تم التسجيل بنجاح",
+    "email": "البريد الالكتروني",
+    "password": "كلمة المرور",
+    "confirm_password": "تأكيد كلمة المرور",
+    "name": "الاسم",
+    "phone": "رقم الهاتف",
+    "address": "العنوان",
+    "login": "تسجيل الدخول",
+    "forgot_password": "نسيت كلمة المرور",
+    "reset_password": "استعادة كلمة المرور"
+    
+}
