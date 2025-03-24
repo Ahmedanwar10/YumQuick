@@ -107,7 +107,10 @@ class _IsSelectedLogOrSignState extends State<IsSelectedLogOrSign>
                 width: 20,
                 color: ColorManager.colorButtonSign,
                 height: 45,
-                onPressed: () {},
+                onPressed: () {
+                 context.go(AppRoutes.registerRoute);
+
+                },
                 text: 'Sign Up',
               ),
             ),

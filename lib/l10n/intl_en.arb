@@ -15,5 +15,7 @@
     "address": "Address",
     "login": "Login",
     "forgot_password": "Forgot Password",
-    "reset_password": "Reset Password"
+    "reset_password": "Reset Password",
+    "already_have_account": "Already have an account?",
+    "new_account":"New Account"
 }

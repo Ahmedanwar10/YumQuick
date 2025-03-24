@@ -22,7 +22,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-bool isLoading = false;
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -63,37 +63,35 @@ bool isLoading = false;
               ),
             ),
             child: BlocConsumer<LoginCubit, LoginState>(
-               listener: (context, state) {
+              listener: (context, state) {
                 if (state is LoginFailure) {
-          setState(() => isLoading = false);
-          showAwesomeDialouge(
-            context,
-            message: state.errorMessage,
-            buttonColor: Colors.red,
-          );
-        }
-        if (state is LoginSuccess) {
-          showAwesomeDialouge(
-            context,
-            message: S.of(context).login_successfully,
-            title: S.of(context).login_success_title,
-            buttonColor: ColorManager.primary,
-            dialogType: DialogType.success,
-            onOkPressed: () {
-              GoRouter.of(context)
-                  .go('/home'); // ✅ الانتقال يتم بعد الضغط على OK
-            },
-          );
-        } else if (state is LoginLoading) {
-          setState(() => isLoading = true);
-        }
-               },
+                  setState(() => isLoading = false);
+                  showAwesomeDialouge(
+                    context,
+                    message: state.errorMessage,
+                    buttonColor: Colors.red,
+                  );
+                }
+                if (state is LoginSuccess) {
+                  showAwesomeDialouge(
+                    context,
+                    message: S.of(context).login_successfully,
+                    title: S.of(context).login_success_title,
+                    buttonColor: ColorManager.primary,
+                    dialogType: DialogType.success,
+                    onOkPressed: () {
+                      GoRouter.of(context)
+                          .go('/home'); // ✅ الانتقال يتم بعد الضغط على OK
+                    },
+                  );
+                } else if (state is LoginLoading) {
+                  setState(() => isLoading = true);
+                }
+              },
               builder: (context, state) {
                 return ModalProgressHUD(
                   inAsyncCall: isLoading,
-          progressIndicator: const CircularProgressIndicator(
-            
-          ),
+                  progressIndicator: const CircularProgressIndicator(),
                   child: SingleChildScrollView(
                     child: Form(
                       key: _formKey,
@@ -109,7 +107,7 @@ bool isLoading = false;
                             ),
                           ),
                           const SizedBox(height: 30),
-                  
+
                           // Email Field
                           const Text(
                             "Email",
@@ -137,9 +135,9 @@ bool isLoading = false;
                               return null;
                             },
                           ),
-                  
+
                           const SizedBox(height: 20),
-                  
+
                           // Password Field
                           const Text(
                             "Password",
@@ -164,9 +162,9 @@ bool isLoading = false;
                               return null;
                             },
                           ),
-                  
+
                           const SizedBox(height: 40),
-                  
+
                           // Login Button
                           Center(
                             child: CustomButtonText(
@@ -175,9 +173,10 @@ bool isLoading = false;
                                 if (_formKey.currentState!.validate()) {
                                   debugPrint("✅ Login Successful");
                                   context.read<LoginCubit>().login(
-                                email: emailController.text.trim(),
-                                password: passwordController.text.trim(),
-                              );
+                                        email: emailController.text.trim(),
+                                        password:
+                                            passwordController.text.trim(),
+                                      );
                                 }
                               },
                               width: 250,
@@ -187,29 +186,31 @@ bool isLoading = false;
                           ),
                           const SizedBox(height: 8),
 
-                    /// 🔵 رابط التسجيل في حالة عدم وجود حساب
-                    GestureDetector(
-                      onTap: () {
-                        GoRouter.of(context).go('/register');
-                      },
-                      child: Center(
-                        child: RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: S.of(context).dont_have_account,
-                                style: AppStyles.styleSomarSansBold12(context),
+                          /// 🔵 رابط التسجيل في حالة عدم وجود حساب
+                          GestureDetector(
+                            onTap: () {
+                              GoRouter.of(context).go('/register');
+                            },
+                            child: Center(
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: S.of(context).dont_have_account,
+                                      style: AppStyles.styleSomarSansBold12(
+                                          context),
+                                    ),
+                                    TextSpan(
+                                      text: S.of(context).register,
+                                      style: AppStyles.styleSomarSansBold12(
+                                              context)
+                                          .copyWith(color: Colors.blue),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              TextSpan(
-                                text: S.of(context).register,
-                                style: AppStyles.styleSomarSansBold12(context)
-                                    .copyWith(color: Colors.blue),
-                              ),
-                            ],
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
                         ],
                       ),
                     ),
