@@ -67,15 +67,8 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
             ),
             child: BlocConsumer<RegisterCubit, RegisterState>(
               listener: (context, state) {
-                if (state is RegisterFailure) {
-                  setState(() => isLoading = false);
-                  showAwesomeDialouge(
-                    context,
-                    message: state.errorMessage,
-                    buttonColor: Colors.red,
-                  );
-                }
                 if (state is RegisterSuccess) {
+                  setState(() => isLoading = false);
                   showAwesomeDialouge(
                     context,
                     message: S.of(context).register_successfully,
@@ -83,12 +76,16 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     buttonColor: ColorManager.primary,
                     dialogType: DialogType.success,
                     onOkPressed: () {
-                      GoRouter.of(context)
-                          .go('/login'); // ✅ الانتقال يتم بعد الضغط على OK
+                      GoRouter.of(context).go('/login');
                     },
                   );
-                } else if (state is RegisterLoading) {
-                  setState(() => isLoading = true);
+                } else if (state is RegisterFailure) {
+                  setState(() => isLoading = false);
+                  showAwesomeDialouge(
+                    context,
+                    message: state.errorMessage,
+                    buttonColor: Colors.red,
+                  );
                 }
               },
               builder: (context, state) {

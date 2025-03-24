@@ -64,15 +64,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             ),
             child: BlocConsumer<LoginCubit, LoginState>(
               listener: (context, state) {
-                if (state is LoginFailure) {
-                  setState(() => isLoading = false);
-                  showAwesomeDialouge(
-                    context,
-                    message: state.errorMessage,
-                    buttonColor: Colors.red,
-                  );
-                }
                 if (state is LoginSuccess) {
+                  setState(() => isLoading = false);
                   showAwesomeDialouge(
                     context,
                     message: S.of(context).login_successfully,
@@ -80,12 +73,16 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     buttonColor: ColorManager.primary,
                     dialogType: DialogType.success,
                     onOkPressed: () {
-                      GoRouter.of(context)
-                          .go('/home'); // ✅ الانتقال يتم بعد الضغط على OK
+                      GoRouter.of(context).go('/home');
                     },
                   );
-                } else if (state is LoginLoading) {
-                  setState(() => isLoading = true);
+                } else if (state is LoginFailure) {
+                  setState(() => isLoading = false);
+                  showAwesomeDialouge(
+                    context,
+                    message: state.errorMessage,
+                    buttonColor: Colors.red,
+                  );
                 }
               },
               builder: (context, state) {

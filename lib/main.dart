@@ -17,6 +17,8 @@ void main() async {
 
   await Hive.openBox<UserModel>(kUserModelBox);
   await Hive.openBox<int>(isRegisteredBox);
+  await Hive.openBox<String>('authBox');
+
 
   runApp(MultiBlocProvider(
     providers: [
