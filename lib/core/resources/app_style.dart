@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:yum_quick/core/resources/color_managers.dart';
 
 abstract class AppStyles {
-
-
   static TextStyle styleSomarSansBold20(BuildContext context) => TextStyle(
         color: Theme.of(context).brightness == Brightness.dark
             ? Colors.white
-            :  ColorManager.colorHeader,
+            : ColorManager.colorHeader,
         fontFamily: 'SomarSans',
         fontSize: 20,
         fontWeight: FontWeight.bold,

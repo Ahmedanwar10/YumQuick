@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yum_quick/Features/splash/views/widgets/sliding_text.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:yum_quick/core/common/widgets/text_siliding.dart';
 import 'package:yum_quick/core/constants/assets.dart';
-import 'package:yum_quick/routes.dart';
+import 'package:yum_quick/core/resources/color_managers.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -22,14 +22,13 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void initState() {
     super.initState();
     initSlidingAnimation();
-    //
     navigationHome();
   }
 
   @override
   void dispose() {
-    super.dispose();
     animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -39,10 +38,22 @@ class _SplashViewBodyState extends State<SplashViewBody>
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         SvgPicture.asset(Assets.imagesSplashLogo),
-        const SizedBox(
-          height:26,
+        const SizedBox(height: 26),
+        CustomSlidingText(
+          slidingAnimation: slidingAnimation,
+          firstText: 'YUM',
+          secondText: 'QUICK',
+          firstTextStyle: GoogleFonts.poppins(
+            fontWeight: FontWeight.w800,
+            fontSize: 35,
+            color: ColorManager.primary,
+          ),
+          secondTextStyle: GoogleFonts.poppins(
+            fontWeight: FontWeight.w800,
+            fontSize: 35,
+            color: ColorManager.white,
+          ),
         ),
-        SlidingText(slidingAnimation: slidingAnimation)
       ],
     );
   }

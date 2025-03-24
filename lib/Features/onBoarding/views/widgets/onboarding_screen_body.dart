@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:yum_quick/Features/home/presentation/views/home_view.dart';
+import 'package:yum_quick/core/common/widgets/is_selected_log_or_sign.dart';
 import 'package:yum_quick/core/constants/assets.dart';
 import 'package:yum_quick/core/resources/color_managers.dart';
+import 'package:yum_quick/routes.dart';
 
 class OnBoardingScreenBody extends StatefulWidget {
   const OnBoardingScreenBody({super.key});
@@ -40,9 +43,7 @@ class _OnBoardingScreenBodyState extends State<OnBoardingScreenBody> {
         currentIndex++;
       });
     } else {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const HomeView()),
-      );
+      context.go(AppRoutes.isSelectedLogOrSignRoute);
     }
   }
 
@@ -73,13 +74,13 @@ class _OnBoardingScreenBodyState extends State<OnBoardingScreenBody> {
                 fit: BoxFit.cover,
               ),
             ),
-
             Column(
               children: [
                 const Spacer(),
                 Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -92,42 +93,41 @@ class _OnBoardingScreenBodyState extends State<OnBoardingScreenBody> {
                       Icon(
                         pages[currentIndex]["icon"],
                         size: 50,
-                        color:ColorManager.primary,
+                        color: ColorManager.primary,
                       ),
                       const SizedBox(height: 10),
-
-                      // العنوان
                       Text(
                         pages[currentIndex]["title"]!,
                         style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color:ColorManager.primary,
+                          color: ColorManager.primary,
                         ),
                       ),
                       const SizedBox(height: 10),
-
-
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Text(
                           pages[currentIndex]["description"]!,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(fontSize: 16, color: Colors.black54),
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.black54),
                         ),
                       ),
                       const SizedBox(height: 20),
-
                       GestureDetector(
                         onTap: nextPage,
                         child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 40),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 12, horizontal: 40),
                           decoration: BoxDecoration(
                             color: ColorManager.primary,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Text(
-                            currentIndex == pages.length - 1 ? "Get Started" : "Next",
+                            currentIndex == pages.length - 1
+                                ? "Get Started"
+                                : "Next",
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -141,16 +141,12 @@ class _OnBoardingScreenBodyState extends State<OnBoardingScreenBody> {
                 ),
               ],
             ),
-
-            // زر تخطي
             Positioned(
               top: 50,
               right: 20,
               child: GestureDetector(
                 onTap: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (_) => const HomeView()),
-                  );
+                  context.go(AppRoutes.isSelectedLogOrSignRoute);
                 },
                 child: const Text(
                   "Skip >",

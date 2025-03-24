@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-  
+
   /// Assets for imagesDesserts
   /// assets/images/Desserts.svg
   static const String imagesDesserts = "assets/images/Desserts.svg";
@@ -12,7 +12,8 @@ class Assets {
 
   /// Assets for imagesFavoritesOrange
   /// assets/images/FavoritesOrange.svg
-  static const String imagesFavoritesOrange = "assets/images/FavoritesOrange.svg";
+  static const String imagesFavoritesOrange =
+      "assets/images/FavoritesOrange.svg";
 
   /// Assets for imagesLogoSplash
   /// assets/images/logo_splash.svg
@@ -64,11 +65,13 @@ class Assets {
 
   /// Assets for imagesVectorEasyPayment
   /// assets/images/vector_easy_payment.svg
-  static const String imagesVectorEasyPayment = "assets/images/vector_easy_payment.svg";
+  static const String imagesVectorEasyPayment =
+      "assets/images/vector_easy_payment.svg";
 
   /// Assets for imagesVectorFastDelevry
   /// assets/images/Vector_fast_delevry.svg
-  static const String imagesVectorFastDelevry = "assets/images/Vector_fast_delevry.svg";
+  static const String imagesVectorFastDelevry =
+      "assets/images/Vector_fast_delevry.svg";
 
   /// Assets for imagesVectorMarket
   /// assets/images/Vector_market.svg
@@ -76,10 +79,10 @@ class Assets {
 
   /// Assets for imagesVectorOrderFood
   /// assets/images/Vector_order_food.svg
-  static const String imagesVectorOrderFood = "assets/images/Vector_order_food.svg";
+  static const String imagesVectorOrderFood =
+      "assets/images/Vector_order_food.svg";
 
   /// Assets for imagesVegan
   /// assets/images/Vegan.svg
   static const String imagesVegan = "assets/images/Vegan.svg";
 }
-

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:yum_quick/routes.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized(); // إذا كنت بحاجة إلى التهيئة قبل تشغيل التطبيق
+  WidgetsFlutterBinding
+      .ensureInitialized(); // إذا كنت بحاجة إلى التهيئة قبل تشغيل التطبيق
 
   runApp(const MyApp());
 }

@@ -4,6 +4,7 @@ import 'package:yum_quick/Features/onBoarding/views/widgets/onboarding_screen.da
 import 'package:yum_quick/Features/register/presentation/views/register_view.dart';
 
 import 'package:yum_quick/Features/splash/views/splash_view.dart';
+import 'package:yum_quick/core/common/widgets/is_selected_log_or_sign.dart';
 
 class AppRoutes {
   static const String splashRoute = "/";
@@ -15,10 +16,9 @@ class AppRoutes {
   static const String settingsRoute = "/settings";
   static const String onBoardingRoute = "/onBoarding";
   static const String mainRoute = "/main";
-  static const String storeDetailsRoute = "/storeDetails";
+  static const String isSelectedLogOrSignRoute = "/isSelectedLogOrSign";
 
-
- static final router = GoRouter(
+  static final router = GoRouter(
     routes: [
       GoRoute(
         path: splashRoute,
@@ -40,7 +40,10 @@ class AppRoutes {
         path: registerRoute,
         builder: (context, state) => const RegisterView(),
       ),
-   
+      GoRoute(
+        path: isSelectedLogOrSignRoute,
+        builder: (context, state) => const IsSelectedLogOrSign(),
+      ),
     ],
   );
 }

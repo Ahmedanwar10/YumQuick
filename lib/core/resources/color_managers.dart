@@ -7,4 +7,5 @@ class ColorManager {
   static const Color colorHeader = Color(0xFFF5CB58);
   static const Color colorHintText = Color(0xFF391713);
   static const Color lightGrey = Color(0xFFD3D3D3);
+  static const Color colorButtonSign = Color(0xFFF3E9B5);
 }
