@@ -5,6 +5,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:yum_quick/Features/login/data/models/user_model/user_model.dart';
 import 'package:yum_quick/const.dart';
+import 'package:yum_quick/core/common/widgets/wrapper_dio.dart';
 import 'package:yum_quick/core/language/language_cubit.dart';
 import 'package:yum_quick/generated/l10n.dart';
 import 'package:yum_quick/routes.dart';
@@ -18,6 +19,8 @@ void main() async {
   await Hive.openBox<UserModel>(kUserModelBox);
   await Hive.openBox<int>(isRegisteredBox);
   await Hive.openBox<String>('authBox');
+    await DioWrapper().initialize(); // 🔥 تأكد من تحميل التوكن بعد فتح Hive
+
 
 
   runApp(MultiBlocProvider(
@@ -41,7 +44,7 @@ class MyApp extends StatelessWidget {
         }
 
         return MaterialApp.router(
-          title: 'TaskMate',
+         
           locale: Locale(languageCode),
           supportedLocales: S.delegate.supportedLocales,
           localizationsDelegates: const [

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-
+  
   /// Assets for imagesDesserts
   /// assets/images/Desserts.svg
   static const String imagesDesserts = "assets/images/Desserts.svg";
@@ -12,8 +12,11 @@ class Assets {
 
   /// Assets for imagesFavoritesOrange
   /// assets/images/FavoritesOrange.svg
-  static const String imagesFavoritesOrange =
-      "assets/images/FavoritesOrange.svg";
+  static const String imagesFavoritesOrange = "assets/images/FavoritesOrange.svg";
+
+  /// Assets for imagesImageBestSeller
+  /// assets/images/image_best_seller.png
+  static const String imagesImageBestSeller = "assets/images/image_best_seller.png";
 
   /// Assets for imagesLogoSplash
   /// assets/images/logo_splash.svg
@@ -35,6 +38,10 @@ class Assets {
   /// assets/images/nav_bar_middle.svg
   static const String imagesNavBarMiddle = "assets/images/nav_bar_middle.svg";
 
+  /// Assets for imagesOfferImage
+  /// assets/images/offer_image.png
+  static const String imagesOfferImage = "assets/images/offer_image.png";
+
   /// Assets for imagesOnboardingA
   /// assets/images/onboarding_a.png
   static const String imagesOnboardingA = "assets/images/onboarding_a.png";
@@ -46,6 +53,14 @@ class Assets {
   /// Assets for imagesOnboardingC
   /// assets/images/onboarding_c.png
   static const String imagesOnboardingC = "assets/images/onboarding_c.png";
+
+  /// Assets for imagesPannerPhoto
+  /// assets/images/panner_photo.png
+  static const String imagesPannerPhoto = "assets/images/panner_photo.png";
+
+  /// Assets for imagesPhotoRecommended
+  /// assets/images/photo_recommended.png
+  static const String imagesPhotoRecommended = "assets/images/photo_recommended.png";
 
   /// Assets for imagesSnacks
   /// assets/images/Snacks.svg
@@ -65,13 +80,11 @@ class Assets {
 
   /// Assets for imagesVectorEasyPayment
   /// assets/images/vector_easy_payment.svg
-  static const String imagesVectorEasyPayment =
-      "assets/images/vector_easy_payment.svg";
+  static const String imagesVectorEasyPayment = "assets/images/vector_easy_payment.svg";
 
   /// Assets for imagesVectorFastDelevry
   /// assets/images/Vector_fast_delevry.svg
-  static const String imagesVectorFastDelevry =
-      "assets/images/Vector_fast_delevry.svg";
+  static const String imagesVectorFastDelevry = "assets/images/Vector_fast_delevry.svg";
 
   /// Assets for imagesVectorMarket
   /// assets/images/Vector_market.svg
@@ -79,10 +92,10 @@ class Assets {
 
   /// Assets for imagesVectorOrderFood
   /// assets/images/Vector_order_food.svg
-  static const String imagesVectorOrderFood =
-      "assets/images/Vector_order_food.svg";
+  static const String imagesVectorOrderFood = "assets/images/Vector_order_food.svg";
 
   /// Assets for imagesVegan
   /// assets/images/Vegan.svg
   static const String imagesVegan = "assets/images/Vegan.svg";
 }
+
