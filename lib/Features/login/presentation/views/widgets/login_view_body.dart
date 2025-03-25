@@ -73,7 +73,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     buttonColor: ColorManager.primary,
                     dialogType: DialogType.success,
                     onOkPressed: () {
-                      GoRouter.of(context).go('/home');
+                      GoRouter.of(context).go('/mainScreen');
                     },
                   );
                 } else if (state is LoginFailure) {

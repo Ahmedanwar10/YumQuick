@@ -29,7 +29,7 @@ class UserModel extends HiveObject {
   String? email;
 
   // ✅ تعديل الـ Constructor ليكون أكثر وضوحًا
-  UserModel ({
+  UserModel({
     this.id,
     this.phone,
     this.email,

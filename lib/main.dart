@@ -19,9 +19,7 @@ void main() async {
   await Hive.openBox<UserModel>(kUserModelBox);
   await Hive.openBox<int>(isRegisteredBox);
   await Hive.openBox<String>('authBox');
-    await DioWrapper().initialize(); // 🔥 تأكد من تحميل التوكن بعد فتح Hive
-
-
+  await DioWrapper().initialize(); // 🔥 تأكد من تحميل التوكن بعد فتح Hive
 
   runApp(MultiBlocProvider(
     providers: [
@@ -44,7 +42,6 @@ class MyApp extends StatelessWidget {
         }
 
         return MaterialApp.router(
-         
           locale: Locale(languageCode),
           supportedLocales: S.delegate.supportedLocales,
           localizationsDelegates: const [

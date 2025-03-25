@@ -12,7 +12,7 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-       const SizedBox(
+        const SizedBox(
           height: 60,
         ),
         // 🔍 شريط البحث
@@ -59,8 +59,8 @@ class HomeViewBody extends StatelessWidget {
         // 🔍 العنوان الصباحي
         // 🔍 العنوان الصباحي
         const Padding(
-          padding:  EdgeInsets.only(left: 30, right: 30),
-          child:  Align(
+          padding: EdgeInsets.only(left: 30, right: 30),
+          child: Align(
             alignment: Alignment.centerLeft, // ✅ يجعل النصوص في البداية (start)
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +86,7 @@ class HomeViewBody extends StatelessWidget {
           ),
         ),
 
-       const  SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Expanded(

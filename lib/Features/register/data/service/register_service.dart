@@ -2,15 +2,14 @@ import 'package:dio/dio.dart';
 import 'package:yum_quick/core/common/widgets/wrapper_dio.dart';
 
 class RegisterService {
-    final DioWrapper _dioWrapper = DioWrapper();
+  final DioWrapper _dioWrapper = DioWrapper();
 
   RegisterService(DioWrapper dioWrapper);
-  Future<Response?>register({
-    required String email, 
-    required String password, 
-    required String name, 
-    required String phone
-    }) async {
+  Future<Response?> register(
+      {required String email,
+      required String password,
+      required String name,
+      required String phone}) async {
     Map<String, dynamic> body = {
       "email": email,
       "password": password,
@@ -18,7 +17,7 @@ class RegisterService {
       "phone": phone,
     };
     print("🔍 Attempting register with: $body");
-     Response? response = await _dioWrapper.postRequest(
+    Response? response = await _dioWrapper.postRequest(
       '/register',
       data: body,
     );

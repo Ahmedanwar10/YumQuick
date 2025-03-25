@@ -14,5 +14,3 @@ final class RegisterFailure extends RegisterState {
 
   RegisterFailure({required this.errorMessage});
 }
-
-

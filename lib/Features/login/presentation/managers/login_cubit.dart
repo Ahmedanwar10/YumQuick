@@ -6,7 +6,6 @@ import 'package:yum_quick/Features/login/data/repositories/login_repo.dart';
 
 part 'login_state.dart';
 
-
 class LoginCubit extends Cubit<LoginState> {
   final LoginRepo loginRepo;
   LoginCubit(this.loginRepo) : super(LoginInitial());

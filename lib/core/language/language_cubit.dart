@@ -3,8 +3,6 @@ import 'package:meta/meta.dart';
 
 part 'language_state.dart';
 
-
-
 class LanguageCubit extends Cubit<LanguageCubitState> {
   LanguageCubit() : super(LanguageCubitInitial());
 
@@ -16,7 +14,8 @@ class LanguageCubit extends Cubit<LanguageCubitState> {
   }
 
   void changeLanguage(String selectedLanguage) {
-    if (state is LanguageChange && (state as LanguageChange).selectedLanguage == selectedLanguage) {
+    if (state is LanguageChange &&
+        (state as LanguageChange).selectedLanguage == selectedLanguage) {
       return; // Avoid unnecessary state updates
     }
     emit(LanguageChange(selectedLanguage));

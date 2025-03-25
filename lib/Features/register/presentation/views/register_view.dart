@@ -12,7 +12,7 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: ColorManager.colorHeader,
       body: BlocProvider(
         create: (context) => RegisterCubit(

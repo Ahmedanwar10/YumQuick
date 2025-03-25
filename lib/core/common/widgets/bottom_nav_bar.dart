@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yum_quick/Features/home/presentation/views/home_view.dart';
+import 'package:yum_quick/Features/menu/presentation/views/menu_view.dart';
+import 'package:yum_quick/core/resources/color_managers.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -12,7 +14,7 @@ class _MainScreenState extends State<MainScreen> {
   // 🖥️ الشاشات الثلاثة التي سيتم التنقل بينها
   final List<Widget> _screens = [
     const HomeView(),
-    MenuScreen(),
+    const MenuView(),
     ProfileScreen(),
   ];
 
@@ -20,7 +22,6 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // 📌 يحتفظ بحالة الشاشات عند التنقل بينها
         IndexedStack(
           index: _selectedIndex,
           children: _screens,
@@ -33,9 +34,10 @@ class _MainScreenState extends State<MainScreen> {
           right: 0,
           child: Container(
             width: double.infinity,
-            decoration:const  BoxDecoration(
-              color: Colors.orange,
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+            decoration: const BoxDecoration(
+              color: ColorManager.primary,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30), topRight: Radius.circular(30)),
             ),
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Row(
@@ -69,19 +71,10 @@ class _MainScreenState extends State<MainScreen> {
   }
 }
 
-// 🔹 شاشات التطبيق (يمكنك تخصيصها)
-
-
-class MenuScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text("🍽️ Menu Screen", style: TextStyle(fontSize: 24)));
-  }
-}
-
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("👤 Profile Screen", style: TextStyle(fontSize: 24)));
+    return Center(
+        child: Text("👤 Profile Screen", style: TextStyle(fontSize: 24)));
   }
 }
