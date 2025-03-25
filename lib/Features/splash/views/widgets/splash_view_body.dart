@@ -79,7 +79,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       if (token != null && token.isNotEmpty) {
         GoRouter.of(context).go('/mainScreen'); // إذا كان هناك توكن، انتقل للصفحة الرئيسية
       } else {
-        GoRouter.of(context).go('/login'); // إذا لم يكن هناك توكن، انتقل لصفحة تسجيل الدخول
+        GoRouter.of(context).go('/onBoarding'); // إذا لم يكن هناك توكن، انتقل لصفحة تسجيل الدخول
       }
     });
   }

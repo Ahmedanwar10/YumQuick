@@ -3,7 +3,10 @@ import 'package:yum_quick/Features/menu/presentation/views/widgets/category_card
 import 'package:yum_quick/core/constants/assets.dart';
 
 class FutureListItems extends StatelessWidget {
-  const FutureListItems({super.key});
+  final String imagePath;
+  final String price;
+  final double rating;
+  const FutureListItems({super.key, required this.imagePath, required this.price, required this.rating});
 
   @override
   Widget build(BuildContext context) {

@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:go_router/go_router.dart';
+import 'package:flutter/material.dart';
 
 class DioWrapper {
   static final DioWrapper _instance = DioWrapper._internal();
@@ -34,8 +36,7 @@ class DioWrapper {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     String? token = box.get('token') ?? prefs.getString('accessToken');
-    String? refreshToken =
-        box.get('refresh_token') ?? prefs.getString('refreshToken');
+    String? refreshToken = box.get('refresh_token') ?? prefs.getString('refreshToken');
 
     if (token != null) {
       setToken(token);
@@ -68,44 +69,63 @@ class DioWrapper {
     handler.next(error);
   }
 
-  Future<String?> handleTokenRefresh() async {
-    if (_isRefreshing) {
-      final completer = Completer<String?>();
-      _tokenQueue.add((newToken) => completer.complete(newToken));
-      return completer.future;
-    }
+ Future<String?> handleTokenRefresh() async {
+  if (_isRefreshing) {
+    final completer = Completer<String?>();
+    _tokenQueue.add((newToken) => completer.complete(newToken));
+    return completer.future;
+  }
 
-    _isRefreshing = true;
-    var box = await Hive.openBox<String>('authBox');
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+  _isRefreshing = true;
+  var box = await Hive.openBox<String>('authBox');
+  SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    String? refreshToken =
-        box.get('refresh_token') ?? prefs.getString('refreshToken');
-    if (refreshToken == null) {
-      _isRefreshing = false;
-      return null;
-    }
-
-    try {
-      final response = await _dio.post(
-        'refresh_token',
-        data: {"refresh_token": refreshToken},
-      );
-
-      if (response.statusCode == 200) {
-        String newAccessToken = response.data['accessToken'];
-        await box.put('token', newAccessToken);
-        await prefs.setString('accessToken', newAccessToken);
-        setToken(newAccessToken);
-        return newAccessToken;
-      }
-    } catch (e) {
-      print("⚠️ Error refreshing token: $e");
-    } finally {
-      _isRefreshing = false;
-    }
+  String? refreshToken = box.get('refresh_token') ?? prefs.getString('refreshToken');
+  if (refreshToken == null) {
+    print("⚠️ لا يوجد Refresh Token مخزن");
+    _isRefreshing = false;
     return null;
   }
+
+  try {
+    final response = await _dio.post(
+      'refresh_token',
+      data: {"refresh_token": refreshToken},
+      options: Options(headers: {"Authorization": "Bearer $refreshToken"}),
+    );
+
+    if (response.statusCode == 200 && response.data['access_token'] != null) {
+      String newAccessToken = response.data['access_token'];
+      print("🔄 تم تحديث التوكن بنجاح: $newAccessToken");
+
+      await box.put('token', newAccessToken);
+      await prefs.setString('accessToken', newAccessToken);
+      setToken(newAccessToken);
+
+      // إخطار جميع الطلبات المنتظرة بالتوكن الجديد
+      for (var callback in _tokenQueue) {
+        callback(newAccessToken);
+      }
+      _tokenQueue.clear();
+
+      return newAccessToken;
+    } else {
+      print("⚠️ فشل تحديث التوكن - كود ${response.statusCode}");
+    }
+  } on DioException catch (e) {
+    print("❌ DioException أثناء تحديث التوكن: ${e.response?.statusCode} - ${e.message}");
+    if (e.response?.statusCode == 401) {
+      print("⛔ التوكن غير صالح، سيتم تسجيل خروج المستخدم...");
+      await logout();
+    }
+  } catch (e) {
+    print("❌ خطأ غير متوقع أثناء تحديث التوكن: $e");
+  } finally {
+    _isRefreshing = false;
+  }
+  return null;
+}
+
 
   void setToken(String? token) {
     _dio.options.headers["Authorization"] =
@@ -164,5 +184,20 @@ class DioWrapper {
       headers["Authorization"] = "Bearer $token";
     }
     return headers;
+  }
+
+  /// **🚪 تسجيل خروج المستخدم ومسح التوكن**
+  Future<void> logout([BuildContext? context]) async {
+    var box = await Hive.openBox<String>('authBox');
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    await box.delete('token');
+    await box.delete('refresh_token');
+    await prefs.remove('accessToken');
+    await prefs.remove('refreshToken');
+
+    if (context != null) {
+      GoRouter.of(context).go('/login');
+    }
   }
 }

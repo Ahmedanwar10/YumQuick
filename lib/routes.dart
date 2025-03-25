@@ -11,7 +11,7 @@ import 'package:yum_quick/Features/settings/presentation/views/setting_view.dart
 
 import 'package:yum_quick/Features/splash/views/splash_view.dart';
 import 'package:yum_quick/Features/update_profile/presentation/views/update_profile.dart';
-import 'package:yum_quick/cart/presentation/views/cart_view.dart';
+import 'package:yum_quick/Features/cart/presentation/views/cart_view.dart';
 import 'package:yum_quick/core/common/widgets/bottom_nav_bar.dart';
 import 'package:yum_quick/core/common/widgets/is_selected_log_or_sign.dart';
 import 'package:yum_quick/core/constants/assets.dart';

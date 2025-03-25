@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:yum_quick/core/common/widgets/wrapper_dio.dart';
 import 'package:yum_quick/core/constants/assets.dart';
 import 'package:yum_quick/core/resources/color_managers.dart';
 
@@ -91,13 +92,16 @@ class ProfileViewBody extends StatelessWidget {
                 const Divider(thickness: 1, height: 30),
 
                 // 🚪 Log Out
-                buildMenuItem(
-                  icon: Icons.logout,
-                  text: "Log Out",
-                  iconColor: Colors.red,
-                  textColor: Colors.red,
-                  onTap: () {},
-                ),
+            buildMenuItem(
+  icon: Icons.logout,
+  text: "Log Out",
+  iconColor: Colors.red,
+  textColor: Colors.red,
+  onTap: () async {
+    await DioWrapper().logout(context);
+  },
+),
+
               ],
             ),
           ),

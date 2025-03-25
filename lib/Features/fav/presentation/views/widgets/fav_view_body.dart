@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yum_quick/Features/fav/presentation/views/widgets/future_list_items.dart';
+import 'package:yum_quick/Features/fav/presentation/managers/fav_cubit.dart';
+import 'package:yum_quick/Features/fav/presentation/views/widgets/category_fav.dart';
 import 'package:yum_quick/core/resources/color_managers.dart';
 
 class FavViewBody extends StatelessWidget {
@@ -45,7 +47,30 @@ class FavViewBody extends StatelessWidget {
                 topRight: Radius.circular(30),
               ),
             ),
-            child: const FutureListItems(),
+            child: BlocBuilder<FavCubit, FavState>(
+              builder: (context, state) {
+                if (state is FavLoading) {
+                  return const Center(child: CircularProgressIndicator()); // ✅ تحميل
+                } else if (state is FavFailure) {
+                  return Center(child: Text(state.errorMessage)); // ❌ خطأ
+                } else if (state is FavSuccess) {
+                  return ListView.builder(
+                    itemCount: state.products.length,
+                    itemBuilder: (context, index) {
+                      final product = state.products[index];
+                      return CategoryCardFav(
+                        imageUrl: product.imagePath?? "No Name", // ✅ تأكد من استخدام المسار الصحيح
+                        title: product.name??"",
+                        subtitle: product.description ?? "",
+                        rating: product.rating ?? 0.0,
+                        price: (product.price ?? 0).toDouble(), // ✅ يحوّل `null` إلى `0.0`
+                      );
+                    },
+                  );
+                }
+                return const Center(child: Text("No favorites found.")); // ℹ️ حالة فارغة
+              },
+            ),
           ),
         ),
       ],

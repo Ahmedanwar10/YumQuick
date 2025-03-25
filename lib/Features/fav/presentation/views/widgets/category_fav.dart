@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yum_quick/core/common/functions/cached_network_image.dart';
 
 class CategoryCardFav extends StatelessWidget {
   final String imageUrl;
@@ -38,10 +39,10 @@ class CategoryCardFav extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(15),
-            child: Image.asset(
-              imageUrl,
-              height: 150,
-              width: double.infinity,
+            child: MyCachedImage(
+              url: imageUrl.isNotEmpty
+                  ? imageUrl
+                  : 'https://via.placeholder.com/150',
               fit: BoxFit.cover,
             ),
           ),
