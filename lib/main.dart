@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:yum_quick/Features/home/data/repositories/repo_slider/repo_impl.dart';
+import 'package:yum_quick/Features/home/data/service/slider_service.dart';
+import 'package:yum_quick/Features/home/presentation/managers/slider/slider_cubit.dart';
 import 'package:yum_quick/Features/login/data/models/user_model/user_model.dart';
 import 'package:yum_quick/const.dart';
 import 'package:yum_quick/core/common/widgets/wrapper_dio.dart';
@@ -24,6 +27,10 @@ void main() async {
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider(create: (context) => LanguageCubit()),
+      BlocProvider(
+          create: (context) => SliderCubit(
+                RepoSliderImpl(sliderService: SliderService(DioWrapper())),
+              )..getSliderData()),
     ],
     child: const MyApp(),
   ));

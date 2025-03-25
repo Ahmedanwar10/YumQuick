@@ -1,23 +1,24 @@
 import 'package:dio/dio.dart';
 import 'package:yum_quick/core/common/widgets/wrapper_dio.dart';
 
-class BestSellerService {
+class SliderService {
   final DioWrapper _dioWrapper = DioWrapper();
 
-  BestSellerService(
+  SliderService(
     DioWrapper dioWrapper,
   );
-  Future<Response?> getBestSellers() async {
-    Response? response = await _dioWrapper.getRequest('/best_seller_products');
+
+  Future<Response?> getSlider() async {
+    Response? response = await _dioWrapper.getRequest('/sliders');
 
     if (response != null) {
       print('=======================================');
-      print('✅ Endpoint Name: BestSeller');
+      print('✅ Endpoint Name: Slider');
       print('📄 Status Code: ${response.statusCode}');
       print('📦 Data: ${response.data}');
       print('=======================================');
     } else {
-      print('❌ BestSeller Failed: No Response from Server');
+      print('❌ Slider Failed: No Response from Server');
     }
 
     return response;

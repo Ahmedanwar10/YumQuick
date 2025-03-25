@@ -34,7 +34,8 @@ class DioWrapper {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     String? token = box.get('token') ?? prefs.getString('accessToken');
-    String? refreshToken = box.get('refresh_token') ?? prefs.getString('refreshToken');
+    String? refreshToken =
+        box.get('refresh_token') ?? prefs.getString('refreshToken');
 
     if (token != null) {
       setToken(token);
@@ -78,7 +79,8 @@ class DioWrapper {
     var box = await Hive.openBox<String>('authBox');
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    String? refreshToken = box.get('refresh_token') ?? prefs.getString('refreshToken');
+    String? refreshToken =
+        box.get('refresh_token') ?? prefs.getString('refreshToken');
     if (refreshToken == null) {
       _isRefreshing = false;
       return null;
@@ -106,10 +108,12 @@ class DioWrapper {
   }
 
   void setToken(String? token) {
-    _dio.options.headers["Authorization"] = token != null ? "Bearer $token" : null;
+    _dio.options.headers["Authorization"] =
+        token != null ? "Bearer $token" : null;
   }
 
-  Future<Response?> postRequest(String endpoint, {Map<String, dynamic>? data, bool requiresAuth = false}) async {
+  Future<Response?> postRequest(String endpoint,
+      {Map<String, dynamic>? data, bool requiresAuth = false}) async {
     return _handleRequest(() async {
       return await _dio.post(
         endpoint,
@@ -119,7 +123,8 @@ class DioWrapper {
     });
   }
 
-  Future<Response?> getRequest(String endpoint, {bool requiresAuth = false}) async {
+  Future<Response?> getRequest(String endpoint,
+      {bool requiresAuth = false}) async {
     return _handleRequest(() async {
       return await _dio.get(
         endpoint,
@@ -128,7 +133,8 @@ class DioWrapper {
     });
   }
 
-  Future<Response?> deleteRequest(String endpoint, {bool requiresAuth = false}) async {
+  Future<Response?> deleteRequest(String endpoint,
+      {bool requiresAuth = false}) async {
     return _handleRequest(() async {
       return await _dio.delete(
         endpoint,

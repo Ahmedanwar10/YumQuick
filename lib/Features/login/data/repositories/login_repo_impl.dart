@@ -15,7 +15,7 @@ class LoginRepoImpl implements LoginRepo {
     try {
       var data = await loginService.login(email: email, password: password);
       LoginDataModel loginDataModel = LoginDataModel.fromJson(data!.data);
-      SharedPreferences  prefs = await SharedPreferences.getInstance();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('accessToken', loginDataModel.accessToken!);
       prefs.setString('refreshToken', loginDataModel.refreshToken!);
       return Right(loginDataModel);

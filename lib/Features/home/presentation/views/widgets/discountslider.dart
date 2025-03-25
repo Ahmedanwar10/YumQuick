@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yum_quick/Features/home/data/models/silder/slider.dart';
+import 'package:yum_quick/Features/home/presentation/managers/slider/slider_cubit.dart';
 import 'package:yum_quick/core/constants/assets.dart';
 
 class DiscountSlider extends StatefulWidget {
@@ -12,78 +15,88 @@ class _DiscountSliderState extends State<DiscountSlider> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
 
-  final List<Map<String, String>> offers = [
-    {
-      "title": "Experience our delicious new dish",
-      "discount": "30% OFF",
-      "image": Assets.imagesOfferImage,
-    },
-    {
-      "title": "Special Deal on Sushi!",
-      "discount": "20% OFF",
-      "image": Assets.imagesOfferImage,
-    },
-    {
-      "title": "Fresh Cupcakes for You",
-      "discount": "15% OFF",
-      "image": Assets.imagesOfferImage,
-    },
-  ];
+  @override
+  void initState() {
+    super.initState();
+    context.read<SliderCubit>().getSliderData();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 150,
-          child: PageView.builder(
-            controller: _pageController,
-            itemCount: offers.length,
-            onPageChanged: (index) {
-              setState(() {
-                _currentPage = index;
-              });
-            },
-            itemBuilder: (context, index) {
-              return DiscountCard(
-                title: offers[index]["title"]!,
-                discount: offers[index]["discount"]!,
-                image: offers[index]["image"]!,
-              );
-            },
-          ),
-        ),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(
-            offers.length,
-            (index) => AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              margin: const EdgeInsets.symmetric(horizontal: 5),
-              width: _currentPage == index ? 20 : 10,
-              height: 5,
-              decoration: BoxDecoration(
-                color: _currentPage == index ? Colors.orange : Colors.grey[300],
-                borderRadius: BorderRadius.circular(5),
+    return BlocBuilder<SliderCubit, SliderState>(
+      builder: (context, state) {
+        if (state is SliderLoadingState) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is SliderFailureState) {
+          return Center(child: Text("❌ خطأ: ${state.errMessage}"));
+        } else if (state is SliderSuccessState) {
+          final List<OfferSlider> sliders = state.sliderData.sliders ?? [];
+
+          if (sliders.isEmpty) {
+            return const Center(child: Text("🚫 لا يوجد عروض متاحة حالياً"));
+          }
+
+          return Column(
+            children: [
+              SizedBox(
+                height: 150,
+                child: PageView.builder(
+                  controller: _pageController,
+                  itemCount: sliders.length,
+                  onPageChanged: (index) {
+                    setState(() {
+                      _currentPage = index;
+                    });
+                  },
+                  itemBuilder: (context, index) {
+                    return DiscountCard(
+                      title: sliders[index].title ?? "عرض خاص!",
+                      description:
+                          sliders[index].description ?? "احصل على أفضل العروض",
+                      image: (sliders[index].imagePath?.isNotEmpty ?? false)
+                          ? sliders[index].imagePath!
+                          : Assets.imagesPannerPhoto,
+                    );
+                  },
+                ),
               ),
-            ),
-          ),
-        ),
-      ],
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  sliders.length,
+                  (index) => AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
+                    width: _currentPage == index ? 20 : 10,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      color: _currentPage == index
+                          ? Colors.orange
+                          : Colors.grey[300],
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+        }
+        return const SizedBox(); // Default fallback
+      },
     );
   }
 }
 
 class DiscountCard extends StatelessWidget {
   final String title;
-  final String discount;
+  final String description;
   final String image;
 
   const DiscountCard({
     super.key,
     required this.title,
-    required this.discount,
+    required this.description,
     required this.image,
   });
 
@@ -94,18 +107,16 @@ class DiscountCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         color: Colors.orange,
       ),
-      //padding: const EdgeInsets.only(left: 10, right: 10),
-      //margin: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
         children: [
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
                     title,
                     style: const TextStyle(
                       color: Colors.white,
@@ -113,29 +124,31 @@ class DiscountCard extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                ),
-                const SizedBox(height: 8),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    discount,
+                  const SizedBox(height: 8),
+                  Text(
+                    description,
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.asset(
+            child: Image.network(
               image,
               width: 210,
               height: 150,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) => Image.asset(
+                "assets/default_image.png",
+                width: 210,
+                height: 150,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ],

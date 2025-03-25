@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class CustomListViewItem extends StatelessWidget {
   final String price;
-  final String imageUrl; 
+  final String imageUrl;
 
   const CustomListViewItem({
     super.key,
     required this.price,
-    required this.imageUrl, 
+    required this.imageUrl,
   });
 
   @override
@@ -25,7 +25,7 @@ class CustomListViewItem extends StatelessWidget {
                 color: Colors.white,
                 image: DecorationImage(
                   fit: BoxFit.fill,
-                  image: NetworkImage(imageUrl), 
+                  image: NetworkImage(imageUrl),
                 ),
               ),
             ),
