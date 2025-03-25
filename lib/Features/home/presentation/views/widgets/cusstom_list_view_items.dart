@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yum_quick/core/common/functions/cached_network_image.dart';
 
 class CustomListViewItem extends StatelessWidget {
   final String price;
@@ -19,14 +20,11 @@ class CustomListViewItem extends StatelessWidget {
         aspectRatio: 2.6 / 4,
         child: Stack(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: Colors.white,
-                image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: NetworkImage(imageUrl),
-                ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: MyCachedImage(
+                url: imageUrl,
+                fit: BoxFit.fill,
               ),
             ),
             Positioned(

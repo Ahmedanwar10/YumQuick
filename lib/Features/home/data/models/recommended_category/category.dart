@@ -2,7 +2,7 @@ import 'product.dart';
 
 class Category {
   String? description;
-  int? id;
+  double? id;
   String? imagePath;
   List<Product>? products;
   String? title;
@@ -15,15 +15,16 @@ class Category {
     this.title,
   });
 
-  factory Category.fromJson(Map<String, dynamic> json) => Category(
-        description: json['description'] as String?,
-        id: json['id'] as int?,
-        imagePath: json['image_path'] as String?,
-        products: (json['products'] as List<dynamic>?)
-            ?.map((e) => Product.fromJson(e as Map<String, dynamic>))
-            .toList(),
-        title: json['title'] as String?,
-      );
+ factory Category.fromJson(Map<String, dynamic> json) => Category(
+      description: json['description'] as String?,
+      id: (json['id'] as num?)?.toDouble(),  // ✅ الحل الصحيح هنا
+      imagePath: json['image_path'] as String?,
+      products: (json['products'] as List<dynamic>?)
+          ?.map((e) => Product.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      title: json['title'] as String?,
+    );
+
 
   Map<String, dynamic> toJson() => {
         'description': description,

@@ -5,7 +5,7 @@ class Product {
   String? imagePath;
   bool? isFavorite;
   String? name;
-  int? price;
+  double? price;
   double? rating;
 
   Product({
@@ -26,7 +26,7 @@ class Product {
         imagePath: json['image_path'] as String?,
         isFavorite: json['is_favorite'] as bool?,
         name: json['name'] as String?,
-        price: json['price'] as int?,
+        price: json['price'] as double?,
         rating: (json['rating'] as num?)?.toDouble(),
       );
 
