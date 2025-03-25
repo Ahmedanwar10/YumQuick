@@ -11,23 +11,16 @@ class FutureScreenSelectItem extends StatelessWidget {
   final Map<String, List<Map<String, dynamic>>> foodItems = {
     "Snacks": [
       {
-        "image": Assets.imagesImageMenu,
+        "image": Assets.imagesOnboardingA,
         "title": "Mexican Appetizer",
         "subtitle": "Tortilla Chips With Toppings",
         "rating": 5.0,
         "price": 15.00
       },
-      {
-        "image": Assets.imagesImageMenu,
-        "title": "Nachos",
-        "subtitle": "Cheese & Jalapeno Nachos",
-        "rating": 4.5,
-        "price": 10.50
-      }
     ],
     "Meal": [
       {
-        "image": Assets.imagesImageMenu,
+        "image": Assets.imagesOnboardingA,
         "title": "Italian Pasta",
         "subtitle": "Penne Pasta With Cheese",
         "rating": 4.8,
@@ -36,37 +29,27 @@ class FutureScreenSelectItem extends StatelessWidget {
     ],
     "Vegan": [
       {
-        "image": Assets.imagesImageMenu,
+        "image": Assets.imagesOnboardingA,
         "title": "Vegan Salad",
         "subtitle": "Fresh Avocado & Veggies",
         "rating": 4.9,
         "price": 9.99
       }
     ],
-    "Dessert": [
-      {
-        "image": Assets.imagesImageMenu,
-        "title": "Chocolate Cake",
-        "subtitle": "Dark Chocolate Delight",
-        "rating": 4.7,
-        "price": 7.50
-      }
-    ],
-    "Drinks": [
-      {
-        "image": Assets.imagesImageMenu,
-        "title": "Strawberry Shake",
-        "subtitle": "Milkshake with fresh strawberries",
-        "rating": 4.6,
-        "price": 5.00
-      }
-    ],
   };
 
   @override
   Widget build(BuildContext context) {
+    // **تحقق من أن `selectedIndex` لا يتجاوز عدد العناصر المتاحة**
+    List<String> categories = foodItems.keys.toList();
+
+    // إذا كان `selectedIndex` غير صالح، يتم تعيينه إلى 0 لتجنب الخطأ
+    int safeIndex = (selectedIndex < categories.length) ? selectedIndex : 0;
+
+    debugPrint("Selected Index: $selectedIndex, Safe Index: $safeIndex");
+
     List<Map<String, dynamic>> selectedItems =
-        foodItems.values.elementAt(selectedIndex);
+        foodItems[categories[safeIndex]] ?? [];
 
     return ListView.builder(
       padding: const EdgeInsets.symmetric(horizontal: 16),

@@ -35,8 +35,11 @@ void main() async {
           create: (context) => SliderCubit(
                 RepoSliderImpl(sliderService: SliderService(DioWrapper())),
               )..getSliderData()),
-              BlocProvider(create: (context) => RecommendedCategoryCubit(
-                RecommendedCategoryRepoImpl(recommendedCategoryService: RecommendedCategoryService(DioWrapper())))),
+      BlocProvider(
+          create: (context) => RecommendedCategoryCubit(
+              RecommendedCategoryRepoImpl(
+                  recommendedCategoryService:
+                      RecommendedCategoryService(DioWrapper())))),
     ],
     child: const MyApp(),
   ));

@@ -22,7 +22,8 @@ class _CustomGridViewItemState extends State<CustomGridViewItem> {
 
   @override
   Widget build(BuildContext context) {
-    print("🖼️ Image Path Received: ${widget.imagePath}"); // ✅ طباعة الرابط للتأكد من صحته
+    print(
+        "🖼️ Image Path Received: ${widget.imagePath}"); // ✅ طباعة الرابط للتأكد من صحته
 
     return AspectRatio(
       aspectRatio: 2.6 / 4,

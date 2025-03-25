@@ -75,12 +75,11 @@ class _MenuViewBodyState extends State<MenuViewBody> {
             ),
             child: Column(
               children: [
-                // ✅ تحديد الفئة المختارة
-                //  CategorySelector(onCategorySelected: _updateCategory),
+                CategorySelector(onCategorySelected: _updateCategory),
                 const SizedBox(height: 20),
-
-                // ✅ عرض القائمة بناءً على الاختيار
-                // Expanded(child: FutureScreenSelectItem(selectedIndex: selectedIndex)),
+                Expanded(
+                    child:
+                        FutureScreenSelectItem(selectedIndex: selectedIndex)),
               ],
             ),
           ),

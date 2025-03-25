@@ -16,4 +16,4 @@ class RecommendedCategoryFailureState extends RecommendedCategoryState {
   RecommendedCategoryFailureState({required this.errMessage});
 }
 
-  class RecommendedCategoryLoadingState extends RecommendedCategoryState {}
+class RecommendedCategoryLoadingState extends RecommendedCategoryState {}

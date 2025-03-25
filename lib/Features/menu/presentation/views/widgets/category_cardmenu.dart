@@ -40,7 +40,7 @@ class CategoryCard extends StatelessWidget {
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
             ),
-            child: Image.network(
+            child: Image.asset(
               imageUrl,
               height: 150,
               width: double.infinity,
