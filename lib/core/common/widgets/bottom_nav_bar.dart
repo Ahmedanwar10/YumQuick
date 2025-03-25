@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yum_quick/Features/home/presentation/views/home_view.dart';
 import 'package:yum_quick/Features/menu/presentation/views/menu_view.dart';
+import 'package:yum_quick/Features/profile/presentation/views/profile_view.dart';
 import 'package:yum_quick/core/resources/color_managers.dart';
 
 class MainScreen extends StatefulWidget {
@@ -11,11 +12,10 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
-  // 🖥️ الشاشات الثلاثة التي سيتم التنقل بينها
   final List<Widget> _screens = [
     const HomeView(),
     const MenuView(),
-    ProfileScreen(),
+    const ProfileView(),
   ];
 
   @override
@@ -74,7 +74,7 @@ class _MainScreenState extends State<MainScreen> {
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
         child: Text("👤 Profile Screen", style: TextStyle(fontSize: 24)));
   }
 }

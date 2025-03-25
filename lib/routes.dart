@@ -1,11 +1,15 @@
 import 'package:go_router/go_router.dart';
+import 'package:yum_quick/Features/fav/presentation/views/fav_view.dart';
 import 'package:yum_quick/Features/home/presentation/views/home_view.dart';
 import 'package:yum_quick/Features/login/presentation/views/login_view.dart';
 import 'package:yum_quick/Features/menu/presentation/views/menu_view.dart';
 import 'package:yum_quick/Features/onBoarding/views/widgets/onboarding_screen.dart';
+import 'package:yum_quick/Features/profile/presentation/views/profile_view.dart';
 import 'package:yum_quick/Features/register/presentation/views/register_view.dart';
+import 'package:yum_quick/Features/settings/presentation/views/setting_view.dart';
 
 import 'package:yum_quick/Features/splash/views/splash_view.dart';
+import 'package:yum_quick/Features/update_profile/presentation/views/update_profile.dart';
 import 'package:yum_quick/core/common/widgets/bottom_nav_bar.dart';
 import 'package:yum_quick/core/common/widgets/is_selected_log_or_sign.dart';
 
@@ -16,11 +20,13 @@ class AppRoutes {
   static const String forgotPasswordRoute = "/forgotPassword";
   static const String homeRoute = "/home";
   static const String profileRoute = "/profile";
+  static const String updateProfileRoute = "/updateProfile";
   static const String settingsRoute = "/settings";
   static const String onBoardingRoute = "/onBoarding";
   static const String mainScreenRoute = "/mainScreen";
   static const String isSelectedLogOrSignRoute = "/isSelectedLogOrSign";
   static const String menuViewRoute = "/menuView";
+  static const String FavViewRoute ="/FavView";
 
   static final router = GoRouter(
     routes: [
@@ -31,6 +37,14 @@ class AppRoutes {
       GoRoute(
         path: menuViewRoute,
         builder: (context, state) => const MenuView(),
+      ),
+      GoRoute(
+        path: updateProfileRoute,
+        builder: (context, state) => const UpdateProfile(),
+      ),
+      GoRoute(
+        path: profileRoute,
+        builder: (context, state) => const ProfileView(),
       ),
       GoRoute(
         path: onBoardingRoute,
@@ -59,6 +73,14 @@ class AppRoutes {
       GoRoute(
         path: mainScreenRoute,
         builder: (context, state) => MainScreen(),
+      ),
+       GoRoute(
+        path:settingsRoute,
+        builder: (context, state) => const SettingView(),
+      ),
+       GoRoute(
+        path:FavViewRoute,
+        builder: (context, state) => const FavView(),
       ),
     ],
   );
