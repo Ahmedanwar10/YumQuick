@@ -8,23 +8,23 @@ class FutureListItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-  children:  const [
-    CategoryCard(
-      imageUrl: Assets.imagesOnboardingA,
-      title: 'Mexican Appetizer',
-      subtitle: 'Tortilla Chips With Toppings',
-      rating: 5.0,
-      price: 15.00,
-    ),
-    CategoryCard(
-      imageUrl: Assets.imagesOnboardingA,
-      title: 'Pork Skewer',
-      subtitle: 'Marinated in a rich blend of herbs and spices...',
-      rating: 4.0,
-      price: 12.99,
-    ),
-  ],
-);
-
+      // ✅ إزالة Expanded، لأن ListView يتمدد تلقائيًا داخل Expanded
+      children: const [
+        CategoryCard(
+          imageUrl: Assets.imagesOnboardingA,
+          title: 'Mexican Appetizer',
+          subtitle: 'Tortilla Chips With Toppings',
+          rating: 5.0,
+          price: 15.00,
+        ),
+        CategoryCard(
+          imageUrl: Assets.imagesOnboardingA,
+          title: 'Pork Skewer',
+          subtitle: 'Marinated in a rich blend of herbs and spices...',
+          rating: 4.0,
+          price: 12.99,
+        ),
+      ],
+    );
   }
 }

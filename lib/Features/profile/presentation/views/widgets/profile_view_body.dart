@@ -10,10 +10,8 @@ class ProfileViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 80), // مسافة من الأعلى لتناسب التصميم
-
-        // ✅ **قسم الملف الشخصي**
-       const  Padding(
+        const SizedBox(height: 80),
+        const Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Row(
             children: [
@@ -22,13 +20,15 @@ class ProfileViewBody extends StatelessWidget {
                 backgroundImage: AssetImage(Assets.imagesOnboardingA),
               ),
               const SizedBox(width: 15),
-
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     "John Smith",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                   ),
                   Text(
                     "Loremipsum@email.com",
@@ -40,14 +40,13 @@ class ProfileViewBody extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 30),
-
         Expanded(
           child: Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-            decoration:const  BoxDecoration(
-              color:  ColorManager.white,
-              borderRadius:  BorderRadius.only(
+            decoration: const BoxDecoration(
+              color: ColorManager.white,
+              borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30),
               ),
@@ -75,7 +74,7 @@ class ProfileViewBody extends StatelessWidget {
                   icon: Icons.favorite_border,
                   text: "My Favorites",
                   onTap: () {
-                    GoRouter.of(context).go('/fav');
+                    GoRouter.of(context).go('/FavView');
                   },
                 ),
 
@@ -119,9 +118,11 @@ class ProfileViewBody extends StatelessWidget {
       leading: Icon(icon, color: iconColor, size: 28),
       title: Text(
         text,
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: textColor),
+        style: TextStyle(
+            fontSize: 16, fontWeight: FontWeight.w500, color: textColor),
       ),
-      trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: Colors.grey),
+      trailing:
+          const Icon(Icons.arrow_forward_ios, size: 18, color: Colors.grey),
       onTap: onTap,
     );
   }

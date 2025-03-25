@@ -17,7 +17,8 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
 
   Future<void> _pickImage() async {
     final ImagePicker picker = ImagePicker();
-    final XFile? pickedImage = await picker.pickImage(source: ImageSource.gallery);
+    final XFile? pickedImage =
+        await picker.pickImage(source: ImageSource.gallery);
     setState(() {
       _image = pickedImage;
     });
@@ -28,7 +29,6 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
     return Column(
       children: [
         const SizedBox(height: 80),
-
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Row(
@@ -42,13 +42,15 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
               const SizedBox(width: 15),
               const Text(
                 "My profile",
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700, color: Colors.white),
+                style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white),
               ),
             ],
           ),
         ),
         const SizedBox(height: 30),
-
         Expanded(
           child: Container(
             width: double.infinity,
@@ -67,7 +69,8 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
                   children: [
                     CircleAvatar(
                       radius: 50,
-                      backgroundImage: _image != null ? FileImage(File(_image!.path)) : null,
+                      backgroundImage:
+                          _image != null ? FileImage(File(_image!.path)) : null,
                       backgroundColor: Colors.grey[300],
                     ),
                     GestureDetector(
@@ -78,7 +81,8 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
                           color: Colors.orange,
                         ),
                         padding: const EdgeInsets.all(5),
-                        child: const Icon(Icons.camera_alt, color: Colors.white, size: 20),
+                        child: const Icon(Icons.camera_alt,
+                            color: Colors.white, size: 20),
                       ),
                     ),
                   ],
@@ -95,11 +99,15 @@ class _UpdateProfileBodyState extends State<UpdateProfileBody> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 15),
                   ),
                   child: const Text(
                     "Update Profile",
-                    style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ],

@@ -9,7 +9,7 @@ class UpdateProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: ColorManager.colorHeader,
-      body:  UpdateProfileBody(),
+      body: UpdateProfileBody(),
     );
   }
 }

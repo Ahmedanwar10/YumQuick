@@ -9,7 +9,7 @@ class SettingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: ColorManager.colorHeader,
-      body:  SettingViewBody(),
+      body: SettingViewBody(),
     );
   }
 }

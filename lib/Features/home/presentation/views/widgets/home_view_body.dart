@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:yum_quick/Features/home/presentation/views/widgets/cusstom_list_view_items.dart';
 import 'package:yum_quick/Features/home/presentation/views/widgets/discountslider.dart';
 import 'package:yum_quick/Features/home/presentation/views/widgets/futured_grid_view_items.dart';
@@ -40,14 +41,18 @@ class HomeViewBody extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               Container(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(2.5),
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
-                  Icons.shopping_cart,
+                child: IconButton(
+                  onPressed: () {
+                    GoRouter.of(context).go('/cartView');
+                  },
+                  icon: const Icon(Icons.shopping_cart),
                   color: Colors.orange,
+                  iconSize: 25,
                 ),
               ),
             ],

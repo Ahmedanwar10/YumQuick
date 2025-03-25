@@ -26,10 +26,9 @@ class SettingViewBody extends StatelessWidget {
               const Text(
                 "Settings",
                 style: TextStyle(
-                  fontSize: 28, 
-                  fontWeight: FontWeight.w700, 
-                  color: Colors.white
-                ),
+                    fontSize: 28,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white),
               ),
             ],
           ),
@@ -83,15 +82,16 @@ class SettingViewBody extends StatelessWidget {
                             const Text(
                               "Language",
                               style: TextStyle(
-                                fontSize: 16, 
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             Switch(
                               value: isArabic,
                               onChanged: (bool newValue) {
-                                context.read<LanguageCubit>().changeLanguage(
-                                    newValue ? 'ar' : 'en');
+                                context
+                                    .read<LanguageCubit>()
+                                    .changeLanguage(newValue ? 'ar' : 'en');
                               },
                             ),
                           ],

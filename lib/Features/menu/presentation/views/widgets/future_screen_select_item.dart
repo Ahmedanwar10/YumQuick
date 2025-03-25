@@ -40,14 +40,8 @@ class FutureScreenSelectItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // **تحقق من أن `selectedIndex` لا يتجاوز عدد العناصر المتاحة**
     List<String> categories = foodItems.keys.toList();
-
-    // إذا كان `selectedIndex` غير صالح، يتم تعيينه إلى 0 لتجنب الخطأ
     int safeIndex = (selectedIndex < categories.length) ? selectedIndex : 0;
-
-    debugPrint("Selected Index: $selectedIndex, Safe Index: $safeIndex");
-
     List<Map<String, dynamic>> selectedItems =
         foodItems[categories[safeIndex]] ?? [];
 

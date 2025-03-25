@@ -24,19 +24,18 @@ class CategoryCardFav extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.black12,
             blurRadius: 6,
             spreadRadius: 2,
-            offset: const Offset(0, 3),
+            offset: Offset(0, 3),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // ✅ **الصورة**
           ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: Image.asset(
@@ -47,8 +46,6 @@ class CategoryCardFav extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-
-          // ✅ **العنوان والتقييم والسعر**
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
@@ -67,7 +64,8 @@ class CategoryCardFav extends StatelessWidget {
                 const Icon(Icons.circle, size: 5, color: Colors.orange),
                 const SizedBox(width: 6),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                   decoration: BoxDecoration(
                     color: Colors.orange[100],
                     borderRadius: BorderRadius.circular(6),
@@ -99,8 +97,6 @@ class CategoryCardFav extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 6),
-
-          // ✅ **الوصف**
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
@@ -112,8 +108,6 @@ class CategoryCardFav extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-
-          // ✅ **خط فاصل**
           const Divider(
             color: Colors.orangeAccent,
             thickness: 1.2,

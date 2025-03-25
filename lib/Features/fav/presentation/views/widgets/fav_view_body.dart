@@ -8,7 +8,7 @@ class FavViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     return Column(
+    return Column(
       children: [
         const SizedBox(height: 80),
         Padding(
@@ -25,17 +25,15 @@ class FavViewBody extends StatelessWidget {
               const Text(
                 "Favorites",
                 style: TextStyle(
-                  fontSize: 28, 
-                  fontWeight: FontWeight.w700, 
-                  color: Colors.white
+                  fontSize: 28,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
                 ),
               ),
             ],
           ),
         ),
         const SizedBox(height: 30),
-
-        // ✅ **إعدادات التطبيق**
         Expanded(
           child: Container(
             width: double.infinity,
@@ -47,14 +45,10 @@ class FavViewBody extends StatelessWidget {
                 topRight: Radius.circular(30),
               ),
             ),
-            child: const Column(
-              children: [
-                FutureListItems()    
-              ],
-            ),
+            child: const FutureListItems(),
           ),
         ),
-      ],  
-            );
+      ],
+    );
   }
 }

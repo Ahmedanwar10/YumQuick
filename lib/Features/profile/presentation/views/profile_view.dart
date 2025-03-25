@@ -8,9 +8,9 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: ColorManager.colorHeader,
-      body: const ProfileViewBody(),
+      body: ProfileViewBody(),
     );
   }
 }
