@@ -48,9 +48,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           },
       keyboardType: widget.keyboardType,
       inputFormatters: widget.inputFormatters,
-      cursorColor: Theme.of(context).primaryColor,
+      cursorColor: ColorManager.primary,
       obscureText: widget.isSecure ? !_isPasswordVisible : false,
-      style: const TextStyle(color: ColorManager.colorHeader, fontSize: 12),
+      style: const TextStyle(color: ColorManager.dark, fontSize: 12),
       decoration: InputDecoration(
         suffixIcon: widget.isSecure
             ? IconButton(
